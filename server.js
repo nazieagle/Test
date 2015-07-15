@@ -22,8 +22,13 @@ http.createServer(function (req, res) {
             var status = fs.statSync(pathname);
             if (status.isFile()) {
                 res.writeHead(200, {'Content-Type': mime.lookup(path.basename(pathname))});
-                var inStream = fs.createReadStream(pathname, 'r', 0777);
-                inStream.pipe(res);
+                fs.readFile(pathname, function (err, data) {
+                    if (err) {
+                        res.end(util.inspect(err));
+                    } else {
+                        res.end(data);
+                    }
+                })
             } else if (status.isDirectory()) {
                 fs.readdir(pathname, function (err, files) {
                     if (err) {

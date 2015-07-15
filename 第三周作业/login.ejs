@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <script src="jquery-1.11.3.js"></script>
+</head>
+<body>
+
+<form id="form" action="/login" method="post">
+    <table border="1">
+        <tr>
+            <td>用户名：</td>
+            <td><input type="text" name="name"/></td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td><input type="password" name="password"/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" id="submit" value="登录"/></td>
+            <td><input type="button" id="register" value="注册"/></td>
+        </tr>
+    </table>
+</form>
+
+<% if(success){ %>
+<div><%= success %></div>
+<% } %>
+<% if(error){ %>
+<div><%= error %></div>
+<% } %>
+</body>
+<script type="text/javascript">
+    $(function () {
+        $('#register').click(function () {
+            location.href = '/reg';
+        })
+
+
+    })
+</script>
+</html>

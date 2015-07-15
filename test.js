@@ -1,7 +1,3 @@
-/**
- * Created by Olive.C on 2015/6/29.
- */
-var http=require('http')
-http.createServer(function (req, res) {
-    res.end('hello')
-}).listen(3000);
+var buffer = new Buffer([1, 2]);
+var buffer2 = new Buffer([2, 3]);
+console.log(Buffer.concat([buffer, buffer2]))
